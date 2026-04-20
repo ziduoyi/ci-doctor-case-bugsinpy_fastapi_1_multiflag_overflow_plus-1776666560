@@ -11,4 +11,6 @@ def build_global_alias_feed(trim_defaults=False, trim_none=False, external_names
         options["drop_defaults"] = True
     if trim_none:
         options["drop_none"] = True
+    if external_names:
+        options["by_alias"] = True
     return Route("GLOBAL_ALIAS_FEED", **options)
