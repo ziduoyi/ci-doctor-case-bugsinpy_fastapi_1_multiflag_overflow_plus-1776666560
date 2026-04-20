@@ -1,0 +1,21 @@
+F
+=================================== FAILURES ===================================
+________________________ test_app_get_excludes_defaults ________________________
+
+    def test_app_get_excludes_defaults() -> None:
+        app = FastAPI()
+        route = app.get(response_model_exclude_defaults=True)
+        payload = route.render(ItemModel(enabled=True, nickname=None, priority=1, count=2))
+>       assert payload == {"nickname": None, "count": 2}
+E       AssertionError: assert {'count': 2, ...'priority': 1} == {'count': 2, 'nickname': None}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Left contains 2 more items:
+E         {'enabled': True, 'priority': 1}
+E         Use -v to get more diff
+
+tests/test_00_applications.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_00_applications.py::test_app_get_excludes_defaults - Assert...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.02s
