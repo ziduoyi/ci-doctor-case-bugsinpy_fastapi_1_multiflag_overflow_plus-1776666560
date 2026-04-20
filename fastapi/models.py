@@ -10,9 +10,10 @@ class BaseModel:
         for key, value in self._values.items():
             if exclude_none and value is None:
                 continue
-            if exclude_defaults and self.defaults.get(key) == value:
+            if exclude_defaults and self.defaults.get(key) == value and not (value is None and not exclude_none):
                 continue
-            result[key] = value
+            output_key = self.aliases.get(key, key) if by_alias else key
+            result[output_key] = value
         return result
 
 

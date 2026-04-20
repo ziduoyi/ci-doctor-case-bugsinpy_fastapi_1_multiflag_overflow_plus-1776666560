@@ -9,4 +9,6 @@ def build_archive_export(omit_defaults=False, omit_none=False):
     }
     if omit_defaults:
         options["drop_defaults"] = True
+    if omit_none:
+        options["drop_none"] = True
     return Route("ARCHIVE_EXPORT", **options)

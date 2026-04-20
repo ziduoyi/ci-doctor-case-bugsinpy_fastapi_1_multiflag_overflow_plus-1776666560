@@ -5,4 +5,5 @@ def make_delete_route(omit_defaults=False, omit_none=False):
     return Route(
         "DELETE",
         drop_defaults=omit_defaults,
+        drop_none=omit_none,
     )

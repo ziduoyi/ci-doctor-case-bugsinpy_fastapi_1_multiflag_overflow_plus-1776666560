@@ -6,4 +6,5 @@ class MountedApp:
         return Route(
             "PATCH",
             drop_defaults=trim_defaults,
+            drop_none=trim_none,
         )

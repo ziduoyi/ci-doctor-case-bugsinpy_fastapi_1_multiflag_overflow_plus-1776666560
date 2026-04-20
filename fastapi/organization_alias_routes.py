@@ -9,4 +9,6 @@ def build_organization_alias_route(trim_defaults=False, alias_output=False):
     }
     if trim_defaults:
         options["drop_defaults"] = True
+    if alias_output:
+        options["by_alias"] = True
     return Route("ORG_ALIAS", **options)

@@ -20,13 +20,24 @@ def jsonable_encoder(obj, drop_defaults=False, drop_none=False, by_alias=False):
         for key, value in obj.items():
             if value is None and drop_none:
                 continue
-            encoded[key] = jsonable_encoder(value)
+            encoded[key] = jsonable_encoder(
+                value,
+                drop_defaults=drop_defaults,
+                drop_none=drop_none,
+                by_alias=by_alias,
+            )
         return encoded
 
     if isinstance(obj, list):
-        return [jsonable_encoder(item) for item in obj]
+        return [
+            jsonable_encoder(item, drop_defaults=drop_defaults, drop_none=drop_none, by_alias=by_alias)
+            for item in obj
+        ]
 
     if isinstance(obj, tuple):
-        return [jsonable_encoder(item) for item in obj]
+        return [
+            jsonable_encoder(item, drop_defaults=drop_defaults, drop_none=drop_none, by_alias=by_alias)
+            for item in obj
+        ]
 
     return obj

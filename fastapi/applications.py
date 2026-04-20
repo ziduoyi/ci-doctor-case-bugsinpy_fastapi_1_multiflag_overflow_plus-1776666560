@@ -13,8 +13,9 @@ class FastAPI:
     def get(self, response_model_exclude_defaults=False, response_model_exclude_none=False):
         return self._build_route(
             "GET",
+            drop_defaults=response_model_exclude_defaults,
             drop_none=response_model_exclude_none,
         )
 
     def post(self, response_model_by_alias=False):
-        return self._build_route("POST")
+        return self._build_route("POST", by_alias=response_model_by_alias)
